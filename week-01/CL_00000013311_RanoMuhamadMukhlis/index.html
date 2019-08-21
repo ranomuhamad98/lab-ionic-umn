@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CL_00000013311_RanoMuhamadMukhlis</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@4.7.4/css/ionic.bundle.css"/>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@4.7.4/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@4.7.4/dist/ionic/ionic.js"></script>
+    
+    <style>
+	:root {
+		--ion-safe-area-top: 20px;
+		--ion-safe-area-bottom: 22px;
+	}
+
+    ion-toolbar{
+		--ion-background-color: #3780FF;
+		padding: 0px !important;
+	}
+
+	ion-title{
+		color: white; 
+		text-align: center
+	}
+
+	ion-card-title{
+	font-weight: 500;
+	font-size: 30px;
+	}
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascript.js"></script>
+</head>
+<body>
+  <ion-app>
+      <ion-header>
+          <ion-toolbar>
+            <ion-title>Budget Planner</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        
+        <ion-content>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Input Pengeluaran</ion-card-title>
+            </ion-card-header>
+      
+            <form onsubmit="processForm(event)">
+              <ion-list lines="full" class="ion-no-margin ion-no-padding">
+                <ion-item>
+                  <ion-input id="var_1" placeholder="Nama Pengeluaran" required type="text"></ion-input>
+                </ion-item>
+        
+                <ion-item>                  
+                  <ion-input type="number" id="var_2" placeholder="Jumlah Pengeluaran" required type="text"></ion-input>
+                </ion-item>
+        
+              </ion-list>
+            </form>
+
+            <section style="float:right; padding: 1%">
+              <ion-button id="button_delete" fill="outline" color="danger">
+              	<ion-icon name="close"></ion-icon> Hapus
+              </ion-button>
+              <ion-button id="button_add">
+              	<ion-icon name="add"></ion-icon> Tambah
+              </ion-button>
+            </section>
+          </ion-card>
+
+          <ion-list id="list">
+              <ion-item id="item_2" style="padding-top: 1%; margin-bottom: 10% !important;display: none">
+              </ion-item>
+          </ion-list>
+
+          <ion-grid>
+            <ion-row>
+                <ion-col size="12">
+                        <ion-label>Total Pengeluaran: </ion-label>
+          				<ion-label id="label_total">Rp 0,00</ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+          
+
+          
+        </ion-content>
+        <ion-alert-controller></ion-alert-controller>
+  </ion-app>
+  <script>
+    const controller = document.querySelector('ion-alert-controller');
+    
+    function handleButtonClick() {
+      controller.create({
+        header: 'Terjadi Kesalahan',
+        message: 'Mohon masukkan nama dan jumlah pengeluaran.',
+        buttons: ['Tutup']
+      }).then(alert => {
+        alert.present();
+      });
+    }
+  </script>
+</body>
+</html>
